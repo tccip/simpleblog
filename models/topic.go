@@ -1,16 +1,19 @@
 package models
 
 import (
+	"fmt"
 	"time"
 
 	gorm "github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	// import _ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 const (
-	USER     = "root"
-	PASSWORD = "111111"
-	DB_NAME  = "blog"
+	// DB_HOST     = ""
+	DB_USER     = "root"
+	DB_PASSWORD = "111111"
+	DB_NAME     = "blog"
 )
 
 type Topic struct {
@@ -26,7 +29,8 @@ type Topic struct {
 var db *gorm.DB = Conn()
 
 func Conn() *gorm.DB {
-	db, err := gorm.Open("mysql", USER+":"+PASSWORD+"@/"+DB_NAME+"?charset=utf8&parseTime=True&loc=Local")
+	db, err := gorm.Open("mysql", DB_USER+":"+DB_PASSWORD+"@/"+DB_NAME+"?charset=utf8&parseTime=True&loc=Local")
+	// db, err := gorm.Open("postgres", "host="+DB_HOST+" user="+DB_USER+" dbname="+DB_NAME+" sslmode=disable password="+DB_PASSWORD)
 	if err != nil {
 		err.Error()
 	}
@@ -57,7 +61,6 @@ func DelTopic(id int) {
 func QueryTopic(id int) Topic {
 	var topic Topic
 	db.Where("id=?", id).Find(&topic)
-
 	topic.Views++
 	db.Save(&topic)
 	return topic
@@ -66,10 +69,6 @@ func QueryTopic(id int) Topic {
 func ModifyTopic(id int, name string, content string) {
 	var topic Topic
 	db.Where("id=?", id).Find(&topic)
-	// topic.Id = id
-	// topic.Name = name
-	// topic.Content = content
-	// topic.LastModify = time.Now()
-	// db.Save(&topic)
-	db.Model(&topic).Updates(map[string]interface{}{"name": name, "content": content, "LastModify": time.Now})
+	fmt.Println(topic)
+	db.Model(&topic).Updates(map[string]interface{}{"Name": name, "Content": content, "LastModfiy": time.Now()})
 }

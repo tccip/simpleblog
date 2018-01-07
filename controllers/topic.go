@@ -73,7 +73,7 @@ func TopicModifyIn(c *gin.Context) {
 	postid, _ := c.GetPostForm("id")
 	title, _ := c.GetPostForm("title")
 	content, _ := c.GetPostForm("content")
-
+	fmt.Println(postid, title, content)
 	id, _ := strconv.Atoi(postid)
 	model.ModifyTopic(id, title, content)
 	c.Redirect(302, "/topic")

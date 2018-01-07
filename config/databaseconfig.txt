@@ -1,0 +1,6 @@
+{
+DB_HOST     = "",
+DB_USER     = "root",
+DB_PASSWORD = "111111",
+DB_NAME     = "blog"
+}

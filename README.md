@@ -5,7 +5,6 @@ simpleblog is a project programming by golang.
 
 
 --Requirements
-
 mysql version: 5.5.54 or +
 golang
 
