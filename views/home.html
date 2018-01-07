@@ -1,0 +1,22 @@
+ {{template "header"}}
+<title>首页-我的 gin 博客</title>
+
+</head>
+
+<body>
+   {{template "navbar"}}
+    <div class="container">
+        {{range .Topics}}
+        <div class="page-header">
+            <h1><a href="/topic/view?id={{.Id}}">{{.Name}}</a></h1>
+            <h6 class="text-muted">文章发表于{{.AddTime}}，共有{{.Views}}次浏览，
+                {{.ReplyAccount}}次评论</h6>
+            <p>{{.Content}}</p>
+        </div>
+        {{end}}
+    </div>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
