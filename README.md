@@ -4,22 +4,24 @@ simpleblog
 simpleblog is a project programming by golang.
 
 
---Requirements
+--Requirements:
 mysql version: 5.5.54 or +
 golang
 
---ProjectDownload
+--ProjectDownload:
 go get github.com/tccip/simpleblog
 
---OtherProjectImport
+--OtherProjectImport:
 GORM   
 go get github.com/jinzhu/gorm
 GIN
 go get github.com/gin-gonic/gin
 
---Init
+--Init:
 building a new database in mysql used statement like this:
 create database blog;
 
+--configration Datbase:
+simpleblog/models/topic.go
 
 
