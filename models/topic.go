@@ -10,7 +10,7 @@ import (
 const (
 	USER     = "root"
 	PASSWORD = "111111"
-	DB_NAME  = "bolog"
+	DB_NAME  = "blog"
 )
 
 type Topic struct {
